@@ -43,7 +43,20 @@ Setiap folder layer punya `AGENTS.md` singkat. Aturan lengkap ada di skill `guid
 
 ## Memakai template ini untuk project baru
 
-1. Salin repo ini (tanpa `.git`, `node_modules`, `.next`).
-2. Ganti nama di `package.json`, isi ulang `guideline/stack-profile.md` (versi, git, atom).
-3. Hapus atau ganti fitur contoh: `src/features/topup`, `src/app/topup`, entri di `src/core/di/server-ports.ts`, `src/core/http/api-endpoints.ts`, `guideline/api-contracts/topup.md`, dan baris di `guideline/page-map.md`. Fitur baru dibangun lewat skill `bp-feature-lifecycle`.
-4. Jalankan `npm run skills:sync`, `npm run lint`, `npm run typecheck`, `npm test`, `npm run build`.
+Jangan mengembangkan project langsung di repo ini — buat repo baru dari template agar histori bersih dan template tetap utuh.
+
+### 1. Buat project (pilih salah satu)
+
+| Cara | Langkah |
+|---|---|
+| **GitHub template** (disarankan) | Klik **"Use this template" → "Create a new repository"** di halaman repo ini, lalu clone repo baru itu. (Pemilik repo: aktifkan sekali lewat *Settings → Template repository*.) |
+| `create-next-app` | `npx create-next-app@latest nama-project --example "https://github.com/afrgun/fe-starter-nextjs"` — bila npm 10 gagal `edgesOut`, tambahkan `--skip-install` lalu jalankan `npx npm@11 install` |
+| Clone manual | `git clone https://github.com/afrgun/fe-starter-nextjs.git nama-project`, hapus folder `.git`, lalu `git init` |
+
+### 2. Ubah template menjadi project
+
+1. Ganti `name` di `package.json` dan judul `README.md`.
+2. Isi ulang `guideline/stack-profile.md` (versi, git/tiket, atom yang tersedia).
+3. Ganti fitur contoh `topup` dengan fitur sungguhan: hapus `src/features/topup`, `src/app/topup`, entri di `src/core/di/server-ports.ts` dan `src/core/http/api-endpoints.ts`, `guideline/api-contracts/topup.md`, serta baris di `guideline/page-map.md`. Bangun fitur baru lewat skill `bp-feature-lifecycle` (contoh prompt: `guideline/PROMPTS.md`).
+4. Salin `.env.example` → `.env.local` dan sesuaikan.
+5. Jalankan `npm run skills:sync`, `npm run lint`, `npm run typecheck`, `npm test`, `npm run build`.
